@@ -28,13 +28,14 @@ lessons rather than as a separate course. Every new idiom explained at first use
 ## Current position
 
 - **Phase:** 0 — Setup & Tooling
-- **Next lesson:** Phase 0 / 02 Git & Collaboration
-- **Completed:** 1 / 523
+- **Next lesson:** Phase 0 / 03 GPU Setup & Cloud
+- **Completed:** 2 / 523
 
 ## Lesson log
 
 | Date | Phase | Lesson | Quiz | Status |
 |---|---|---|---|---|
+| 2026-09-20 | 0 | 02 Git & Collaboration | — | Done. Fork/remote repoint, branch, commit, push. Grasped branch=pointer; shaky on diff/reachability. |
 | 2026-09-20 | 0 | 01 Dev Environment | — | Done. Debugged missing `python3.exe`; correctly rejected shell-alias fix. Predicted preflight result accurately. |
 
 ## Review queue
@@ -45,5 +46,7 @@ _(concepts that were shaky — revisited at the start of the next session)_
 - **Diagnosis precision**: read "no such file on PATH" vs "wrong program ran" as different causes. Assumed a version conflict where none existed. Re-test in any Phase 0-2 debugging.
 - **library vs executable**: library = imported inside Python; executable = run by the shell. Used interchangeably.
 - **shell-level vs system-level fixes**: a shell alias is private to one shell; a file on PATH is visible to the OS and every subprocess.
+- **Commit message discipline**: writing date/lesson codes (`P0_L2_200926`) instead of what+why. Re-check at end of week 1.
+- **Branch deletion / reachability**: deleting a branch deletes a label, not commits; commits are lost only when nothing can reach them. Diffs work on SHAs, no branch name needed.
 - Token = unit of text, not unit of cost (Phase 5)
 - Embedding is the vector itself, not the storage (Phase 11)
