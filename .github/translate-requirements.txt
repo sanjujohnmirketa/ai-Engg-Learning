@@ -3,6 +3,6 @@
 # CPU wheel index, everything else from PyPI.
 --index-url https://download.pytorch.org/whl/cpu
 --extra-index-url https://pypi.org/simple
-torch==2.5.1
+torch==2.12.1+cpu
 transformers==4.46.3
 sentencepiece==0.2.0
