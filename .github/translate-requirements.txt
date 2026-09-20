@@ -5,4 +5,4 @@
 --extra-index-url https://pypi.org/simple
 torch==2.5.1
 transformers==4.46.3
-sentencepiece==0.2.0
+sentencepiece==0.2.1
