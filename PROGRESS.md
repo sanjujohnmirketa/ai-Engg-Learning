@@ -13,7 +13,7 @@ Updated at the end of each session. Reviewed at the start of each week.
 |---|---|---|---|
 | P0-01 Dev Environment | ☑ | — | Fixed missing `python3` on Windows (PATH-level exe, not a shell alias). Preflight 2/2. |
 | P0-02 Git & Collaboration | ☑ | — | Repointed origin to own repo, branched my-progress, committed + pushed. Workflow decision: my-progress = trunk, main = upstream mirror. |
-| P0-03 GPU Setup & Cloud | ☐ | — | |
+| P0-03 GPU Setup & Cloud | ☑ | — | Colab T4 verified (15360MiB). Benchmark 13x speedup on 5000x5000. VRAM rule learned. |
 | P0-04 APIs & Keys | ☐ | — | |
 | P0-05 Jupyter Notebooks | ☐ | — | |
 | P0-06 Python Environments | ☐ | — | |

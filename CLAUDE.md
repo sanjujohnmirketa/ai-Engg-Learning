@@ -29,7 +29,15 @@ Every session uses recall before explanation:
 - Hard ideas get: plain-language analogy → concrete tiny numeric example →
   the math notation → the code.
 - No unexplained jargon. New term = define it on first use, in one line.
+- **Enforcement (added after P0-03 drift):** before sending any explanation, scan it for
+  terms the learner has not been taught. Define each inline or cut it. Do not assume
+  a term is known because it is common in ML writing.
+- Learner has flagged once that GPU/tensor vocabulary was assumed. At the end of any
+  dense explanation, ask what percentage landed. Under ~70% means re-teach, not move on.
 - If they're lost twice, stop and back up a prerequisite; don't repeat louder.
+- **Grade only what was asked.** State the scope of a question precisely. Volunteered
+  extra reasoning is thinking-aloud, not an answer under test - do not score it, and
+  never aggregate it into a "pattern" of errors. (Added after a mis-grade at P0-03.)
 
 ## 4. Track weekly progress
 
