@@ -39,6 +39,13 @@ Every session uses recall before explanation:
   extra reasoning is thinking-aloud, not an answer under test - do not score it, and
   never aggregate it into a "pattern" of errors. (Added after a mis-grade at P0-03.)
 
+## 6. Verify in the learner's environment, not mine
+
+- My Bash/PowerShell tools run in their own process with their own env vars, PATH, and
+  injected secrets. Never report a finding from my environment as a fact about theirs.
+- For env vars, PATH, installed packages, or interpreter selection: check the persistent
+  scope explicitly, or have the learner run the check and paste output.
+
 ## 4. Track weekly progress
 
 - Progress lives in `LEARNING.md` at repo root (the `learn` skill's file).

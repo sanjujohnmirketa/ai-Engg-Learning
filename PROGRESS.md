@@ -14,9 +14,9 @@ Updated at the end of each session. Reviewed at the start of each week.
 | P0-01 Dev Environment | ☑ | — | Fixed missing `python3` on Windows (PATH-level exe, not a shell alias). Preflight 2/2. |
 | P0-02 Git & Collaboration | ☑ | — | Repointed origin to own repo, branched my-progress, committed + pushed. Workflow decision: my-progress = trunk, main = upstream mirror. |
 | P0-03 GPU Setup & Cloud | ☑ | — | Colab T4 verified (15360MiB). Benchmark 13x speedup on 5000x5000. VRAM rule learned. |
-| P0-04 APIs & Keys | ☐ | — | |
+| P0-04 APIs & Keys | ☑ | — | SDK call succeeded. Wrong-key exercise -> 401 correctly identified. requirements file created (direct deps only). |
 | P0-05 Jupyter Notebooks | ☐ | — | |
-| P0-06 Python Environments | ☐ | — | |
+| P0-06 Python Environments | ☑ | — | Done ahead of order (out of necessity). venv built on C:\Python313, verified via pyvenv.cfg. Deep debugging detour: renamed-vs-copied python.exe. |
 | P0-07 Docker for AI | ☐ | — | |
 | P0-08 Editor Setup | ☐ | — | |
 | P0-09 Data Management | ☐ | — | |

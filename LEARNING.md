@@ -11,7 +11,7 @@
 | Python level | Beginner — loops, ifs, functions, lists solid; classes/generators/numpy need explaining |
 | Math level | Rusty — saw linear algebra & calculus years ago, needs re-derivation not review |
 | LLM internals | Vocabulary yes, mechanics no |
-| Environment | Windows 11, Python 3.13.4, `python3` fixed at C:\Python313\python3.exe, Git 2.43, no venv yet, no PyTorch |
+| Environment | Windows 11. Course Python = C:\Python313 (3.13.4), BOTH python.exe and python3.exe present. venv at `.venv` parented to C:\Python313. Also present but unused: miniconda3 base + `myenvironment` (223 pkgs). Git 2.43. |
 | GPU | AMD Vega 8 integrated, no CUDA, no ROCm support. Ryzen 5 3500U, 9.9GB RAM. Cloud/Colab for Phase 10+. Buy decision deferred to Phase 10. |
 | Repo | origin = github.com/sanjujohnmirketa/ai-Engg-Learning. Trunk = `my-progress` (also GitHub default). `main` = upstream mirror, never commit. |
 
@@ -30,18 +30,26 @@ lessons rather than as a separate course. Every new idiom explained at first use
 ## Current position
 
 - **Phase:** 0 — Setup & Tooling
-- **Next lesson:** Phase 0 / 04 APIs & Keys
-- **Completed:** 3 / 523
+- **Next lesson:** Phase 0 / 05 Jupyter Notebooks
+- **Completed:** 5 / 523  (P0: 01,02,03,04,06)
 
 ## Lesson log
 
 | Date | Phase | Lesson | Quiz | Status |
 |---|---|---|---|---|
+| 2026-09-26 | 0 | 04 APIs & Keys | — | Done. SDK call live, 401 on bad key. Long env detour taught PATH, venv internals, subprocess debugging, process env inheritance. |
+| 2026-09-26 | 0 | 06 Python Environments | — | Done out of order. Built venv on C:\Python313 after debugging renamed python.exe. |
 | 2026-09-21 | 0 | 03 GPU Setup & Cloud | — | Done. Colab T4, 13x benchmark. Strong: asked why questions mattered. Gap: CUDA context/caching allocator was new. |
 | 2026-09-20 | 0 | 02 Git & Collaboration | — | Done. Fork/remote repoint, branch, commit, push. Grasped branch=pointer; shaky on diff/reachability. |
 | 2026-09-20 | 0 | 01 Dev Environment | — | Done. Debugged missing `python3.exe`; correctly rejected shell-alias fix. Predicted preflight result accurately. |
 
 ## Tutor notes
+
+- **2026-09-26:** Reported ANTHROPIC_API_KEY as "already set" based on `env | grep` run from
+  the Claude Code tool environment, which injects its own key. That is NOT the learner's shell
+  environment. RULE: when checking env vars, check the scope that actually matters
+  ([Environment]::GetEnvironmentVariable with User/Machine scope on Windows), and prefer having
+  the learner verify from their own shell. Do not read one environment and report it as another.
 
 - **2026-09-22:** Graded a volunteered aside as a wrong answer and called it a pattern
   ("third slip"). Learner correctly pushed back: the question asked only for 3B x 2 bytes.
@@ -57,7 +65,18 @@ lessons rather than as a separate course. Every new idiom explained at first use
 
 _(concepts that were shaky — revisited at the start of the next session)_
 
-- Virtualenvs - still on global Python (due P0-06)
+- [RESOLVED 2026-09-26] Virtualenv built at `.venv` on C:\Python313. anthropic + python-dotenv installed (16 pkgs with transitive deps).
+- **HTTP status codes**: 401 = bad credential (stop), 403 = no permission, 429 = rate limit (wait+retry), 400 = malformed, 500 = their fault (retry). Matters in Phase 14 agent loops - retrying a 401 is a real bug.
+- **pip needs `-r` for a requirements file**: bare `pip install file.txt` treats the filename as a package name.
+- **requirements.txt = direct deps only** (chose Option B over pip freeze). Add a line when a lesson introduces a package. Lockfiles/pinning = Phase 17.
+- **PATH order**: first match wins, rest invisible. `python` = miniconda, `python3` = C:\Python313 on this machine. Root cause of the "installed but not importable" confusion.
+- **Always `python3 -m pip install`, never bare `pip`**: guarantees which interpreter receives the package.
+- **Environments are built, never copied**: venvs bake absolute paths into pyvenv.cfg. Share requirements.txt, not the folder.
+- **pyvenv.cfg is the audit file**: `home`/`executable` reveal which Python parented a venv. Read it before trusting an environment.
+- **Verify destructive steps completed** before building on them (half-deleted .venv caused a confusing second failure).
+- **A fix that works can still break an invariant**: renaming python.exe -> python3.exe satisfied the CLI but broke ensurepip, which hardcodes `python.exe`. Dormant for 3 lessons. Copy/symlink, do not rename.
+- **Subprocess debugging**: when a tool reports `Command '[...]' returned non-zero exit status N`, the bracketed list IS the command. Run it directly to see the swallowed error. Exit codes hide; direct output reveals.
+- **`--without-pip` bisection**: splitting a failing pipeline into stages isolates which stage is at fault.
 - **Diagnosis precision**: read "no such file on PATH" vs "wrong program ran" as different causes. Assumed a version conflict where none existed. Re-test in any Phase 0-2 debugging.
 - **library vs executable**: library = imported inside Python; executable = run by the shell. Used interchangeably.
 - **shell-level vs system-level fixes**: a shell alias is private to one shell; a file on PATH is visible to the OS and every subprocess.
